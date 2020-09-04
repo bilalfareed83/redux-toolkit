@@ -14,6 +14,11 @@ export function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState("2");
+  // console.log(count.isLoading);
+
+  if (count.isLoading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div>
@@ -25,7 +30,7 @@ export function Counter() {
         >
           +
         </button>
-        <span className={styles.value}>{count}</span>
+        <span className={styles.value}>{count.value}</span>
         <button
           className={styles.button}
           aria-label="Decrement value"
